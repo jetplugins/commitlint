@@ -1,0 +1,38 @@
+<idea-plugin>
+    <id>commitlint</id>
+    <name>CommitLint</name>
+    <vendor url="https://github.com/jetplugins">Jetplugins</vendor>
+    <description><![CDATA[
+        Lint git commit message, author, branch<br>
+        校验Git提交消息、作者、分支<br>
+        <p>
+            <a href="https://github.com/jetplugins/commitlint">GitHub</a> |
+            <a href="https://github.com/jetplugins/commitlint/issues">Issues</a>
+        </p>
+        <h2>Features</h2>
+        <ul>
+            <li>Lint commit message.</li>
+            <li>Lint author name and email.</li>
+            <li>Lint branch name.</li>
+        </ul>
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
+    <idea-version since-build="181.4203.550"/>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+       on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>Git4Idea</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationService serviceImplementation="io.commitlint.CommitLintSettings"/>
+        <checkinHandlerFactory implementation="io.commitlint.CommitLintHandlerFactory" order="first"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+
+</idea-plugin>
