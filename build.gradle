@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.github.jetplugins'
-version '0.0.1'
+version '0.0.2'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 compileJava.options.encoding = "UTF-8"
@@ -27,7 +27,10 @@ intellij {
     updateSinceUntilBuild = false
 }
 patchPluginXml {
-    changeNotes = """Initial commit"""
+    changeNotes = """
+        Fix compatibility<br>
+        Fix matching message issues<br>
+    """
 }
 
 test {

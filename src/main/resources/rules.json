@@ -16,7 +16,7 @@
     },
     {
         "type": "MESSAGE",
-        "match": "^((feat|fix|docs|style|refactor|perf|build|ci|chore|revert|improvement)(\\(.+\\))?: .+)|(Initial commit)",
+        "match": "^((feat|fix|docs|style|refactor|perf|build|ci|chore|revert|improvement)(\\(\\S+\\))?: \\S+(\\n\\n(.+\\n*)+){0,2})|(Initial commit)$",
         "tips": "Invalid commit message, the rules:\ntype: feat,fix,docs,style,refactor,perf,build,ci,chore,revert,improvement\n\ntype(scope): subject\nBLANK LINE\nbody\nBLANK LINE\nfooter"
     }
 ]
