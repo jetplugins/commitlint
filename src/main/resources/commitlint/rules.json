@@ -1,7 +1,7 @@
 [
     {
         "type": "BRANCH_NAME",
-        "match": "^master|main|dev|develop|test|release|((feat|fix|refactor|ci|dev|revert)-\\d{8}-[a-zA-Z0-9.]+)|((feat|fix|refactor|ci|dev|revert)-[a-zA-Z0-9.]+)$",
+        "match": "^master|main|dev|develop|test|release|((feat|fix|refactor|ci|dev|revert)-\\d{8}-[a-zA-Z0-9.]+(-[a-zA-Z0-9.]+)*)|((feat|fix|refactor|ci|dev|revert)-[a-zA-Z0-9.]+)$",
         "tips": "Invalid branch name, the rules: \n\nTemplate: prefix-yyyyMMdd-description, prefix-description\nPrefix: feat, fix, refactor, ci, dev, revert\nFullName: master, main, dev, develop, test, release"
     },
     {
@@ -16,7 +16,7 @@
     },
     {
         "type": "MESSAGE",
-        "match": "^((feat|fix|docs|style|refactor|perf|build|ci|chore|revert|improvement)(\\(\\S+\\))?: \\S+(\\n\\n(.+\\n*)+){0,2})|(Initial commit)$",
-        "tips": "Invalid commit message, the rules:\ntype: feat,fix,docs,style,refactor,perf,build,ci,chore,revert,improvement\n\ntype(scope): subject\nBLANK LINE\nbody\nBLANK LINE\nfooter"
+        "match": "^((feat|fix|docs|style|refactor|perf|build|ci|chore|revert|improvement|test)(\\(\\S+\\))?: \\S+.*(\\n\\n(.+\\n*)+){0,2})|(Initial commit)$",
+        "tips": "Invalid commit message, the rules:\ntype: feat,fix,docs,style,refactor,perf,build,ci,chore,revert,improvement,test\n\ntype(scope): subject\nBLANK LINE\nbody\nBLANK LINE\nfooter"
     }
 ]

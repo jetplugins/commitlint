@@ -6,4 +6,4 @@ Lint git commit message, author, branch
 - user.email: must be email
 - message: Angular JS commit message
 
-rules: [rules.json](src/main/resources/rules.json)
+rules: [rules.json](src/main/resources/commitlint/rules.json)
