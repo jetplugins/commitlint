@@ -26,7 +26,8 @@
     <depends>Git4Idea</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
+        <applicationService serviceImplementation="io.commitlint.settings.Settings"/>
+        <applicationConfigurable instance="io.commitlint.settings.SettingsConfiguration"/>
         <checkinHandlerFactory implementation="io.commitlint.CommitLintHandlerFactory" order="first"/>
     </extensions>
 

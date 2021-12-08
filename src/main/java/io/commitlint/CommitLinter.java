@@ -5,6 +5,7 @@ import io.commitlint.LintRule.RuleType;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Lint commit
@@ -53,7 +54,9 @@ public class CommitLinter {
     }
 
     private List<LintRule> getRulesByType(RuleType type) {
-        return rules.stream().filter(rule -> rule.type == type).collect(Collectors.toList());
+        return rules.stream()
+                .filter(rule -> rule.type == type && StringUtils.isNotEmpty(rule.match))
+                .collect(Collectors.toList());
     }
 
     private String handleRuleMatch(Commit commit, String regular) {

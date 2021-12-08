@@ -20,6 +20,7 @@ import git4idea.branch.GitBranchUtil;
 import git4idea.repo.GitRepository;
 import io.commitlint.CommitLinter.Commit;
 import io.commitlint.CommitLinter.Result;
+import io.commitlint.settings.Settings;
 import java.util.List;
 import javax.swing.JComponent;
 import org.jetbrains.annotations.Nullable;
@@ -34,9 +35,12 @@ public class CommitLintHandlerFactory extends CheckinHandlerFactory {
 
             @Override
             public RefreshableOnComponent getBeforeCheckinConfigurationPanel() {
+                Settings settings = Settings.getInstance();
                 final NonFocusableCheckBox checkItem = new NonFocusableCheckBox("Lint commit");
                 checkItem.setSelected(true);
-                checkItem.setEnabled(false);
+                if (settings.forceLint) {
+                    checkItem.setEnabled(false);
+                }
 
                 return new RefreshableOnComponent() {
                     public JComponent getComponent() {
@@ -109,7 +113,8 @@ public class CommitLintHandlerFactory extends CheckinHandlerFactory {
             }
 
             private CommitLinter getCommitLinter() {
-                List<LintRule> rules = InternalUtils.getLintRules();
+                Settings settings = Settings.getInstance();
+                List<LintRule> rules = settings.allowCustomRules ? settings.rules : InternalUtils.getLintRules();
                 return new CommitLinter(rules);
             }
         };
