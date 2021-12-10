@@ -32,6 +32,7 @@ public class CommitLintHandlerFactory extends CheckinHandlerFactory {
         return new CheckinHandler() {
 
             private final Project project = panel.getProject();
+            private boolean check = false;
 
             @Override
             public RefreshableOnComponent getBeforeCheckinConfigurationPanel() {
@@ -53,6 +54,7 @@ public class CommitLintHandlerFactory extends CheckinHandlerFactory {
 
                     @Override
                     public void saveState() {
+                        check = checkItem.isSelected();
                     }
 
                     @Override
@@ -64,6 +66,9 @@ public class CommitLintHandlerFactory extends CheckinHandlerFactory {
             @Override
             public ReturnResult beforeCheckin(@Nullable CommitExecutor executor,
                     PairConsumer<Object, Object> additionalDataConsumer) {
+                if (!check) {
+                    return ReturnResult.COMMIT;
+                }
                 // 校验提交信息
                 try {
                     CommitLinter linter = getCommitLinter();
